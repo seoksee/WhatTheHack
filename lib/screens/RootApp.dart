@@ -7,8 +7,10 @@
 // amber. The `_onItemTapped` function changes the selected item's index
 // and displays a corresponding message in the center of the [Scaffold].
 
+import 'package:budgetsavvy/screens/CategoryScreen.dart';
 import 'package:budgetsavvy/screens/DashboardScreen.dart';
 import 'package:budgetsavvy/screens/BudgetScreen.dart';
+import 'package:budgetsavvy/screens/HomeScreen.dart';
 import 'package:budgetsavvy/screens/RewardsScreen.dart';
 import 'package:budgetsavvy/screens/StatisticsScreen.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +47,7 @@ class _RootAppState extends State<RootApp> {
     DashboardScreen(),
     BudgetScreen(),
     RewardsScreen(),
+    // HomeScreen(),
     StatisticsScreen()
   ];
 

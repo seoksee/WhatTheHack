@@ -28,12 +28,16 @@ _generateExpenses() {
 }
 
 List<Category> categories = [
+  Category(name: 'Bills', maxAmount: 300, expenses: _generateExpenses()),
+  Category(name: 'Education', maxAmount: 500, expenses: _generateExpenses()),
+  Category(name: 'Grocery', maxAmount: 600, expenses: _generateExpenses()),
+  Category(name: 'Gift', maxAmount: 330, expenses: _generateExpenses()),
+  Category(name: 'Health', maxAmount: 500, expenses: _generateExpenses()),
+  Category(name: 'Household', maxAmount: 1000, expenses: _generateExpenses()),
   Category(name: 'Food', maxAmount: 450, expenses: _generateExpenses()),
-  Category(name: 'Clothing', maxAmount: 500, expenses: _generateExpenses()),
-  Category(name: 'Utilities', maxAmount: 600, expenses: _generateExpenses()),
-  Category(
-      name: 'Entertainment', maxAmount: 330, expenses: _generateExpenses()),
-  Category(
-      name: 'Transportation', maxAmount: 500, expenses: _generateExpenses()),
-  Category(name: 'Housing', maxAmount: 1000, expenses: _generateExpenses()),
+  Category(name: 'Apparel', maxAmount: 500, expenses: _generateExpenses()),
+  Category(name: 'Transport', maxAmount: 600, expenses: _generateExpenses()),
+  Category(name: 'Pets', maxAmount: 330, expenses: _generateExpenses()),
+  Category(name: 'Social', maxAmount: 500, expenses: _generateExpenses()),
+  Category(name: 'Other', maxAmount: 1000, expenses: _generateExpenses()),
 ];
