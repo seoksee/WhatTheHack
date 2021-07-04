@@ -44,7 +44,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 ),
               ),
               Text(
-                '-\$${expense.cost.toStringAsFixed(2)}',
+                'RM${expense.cost.toStringAsFixed(2)}',
                 style: TextStyle(
                   color: Colors.red,
                   fontSize: 20.0,
@@ -105,13 +105,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
               child: CustomPaint(
                 foregroundPainter: RadialPainter(
                   bgColor: Colors.grey[200],
-                  lineColor: getColor(context, percent),
+                  lineColor: _getColor(percent),
                   percent: percent,
                   width: 15.0,
                 ),
                 child: Center(
                   child: Text(
-                    '\$${amountLeft.toStringAsFixed(2)} / \$${widget.category.maxAmount}',
+                    'RM${amountLeft.toStringAsFixed(2)} / RM${widget.category.maxAmount}',
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.w600,
@@ -125,5 +125,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
         ),
       ),
     );
+  }
+  _getColor(double percent) {
+    if (percent < 0) {
+      return Color(0xfff68783);
+    } else {
+      return Color(0xff54A7D6);
+    }
   }
 }

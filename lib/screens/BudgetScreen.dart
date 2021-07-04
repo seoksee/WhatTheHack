@@ -50,7 +50,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                   ),
                 ),
                 Text(
-                  '\$${(totalAmountSpend).toStringAsFixed(2)} / \$${category.maxAmount.toStringAsFixed(2)}',
+                  'RM${(totalAmountSpend).toStringAsFixed(2)} / RM${category.maxAmount.toStringAsFixed(2)}',
                   style: TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.w600,
