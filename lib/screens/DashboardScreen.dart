@@ -203,19 +203,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
         body: Column(
           children: [
             _children[_currentIndex],
+            Expanded(child: 
             Center(
-                child: SfCircularChart(
-                    legend: Legend(isVisible: true),
-                    series: <DoughnutSeries<_PieData, String>>[
-                  DoughnutSeries<_PieData, String>(
-                      explode: true,
-                      explodeIndex: 0,
-                      dataSource: pieData,
-                      xValueMapper: (_PieData data, _) => data.xData,
-                      yValueMapper: (_PieData data, _) => data.yData,
-                      dataLabelMapper: (_PieData data, _) => data.text,
-                      dataLabelSettings: DataLabelSettings(isVisible: true)),
-                ])),
+                  child: SfCircularChart(
+                      legend: Legend(isVisible: true),
+                      series: <DoughnutSeries<_PieData, String>>[
+                    DoughnutSeries<_PieData, String>(
+                        explode: true,
+                        explodeIndex: 0,
+                        dataSource: pieData,
+                        xValueMapper: (_PieData data, _) => data.xData,
+                        yValueMapper: (_PieData data, _) => data.yData,
+                        dataLabelMapper: (_PieData data, _) => data.text,
+                        dataLabelSettings: DataLabelSettings(isVisible: true)),
+                  ])),
+            )
+            
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
