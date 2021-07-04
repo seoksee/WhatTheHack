@@ -15,11 +15,14 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   List<_PieData> pieData = [
-    _PieData('Jan', 35, 'a'),
-    _PieData('Feb', 28, 'b'),
-    _PieData('Mar', 34, 'c'),
-    _PieData('Apr', 32, 'd'),
-    _PieData('May', 40, 'e')
+    _PieData('', 350, 'Bills'),
+    _PieData('', 340, 'Grocery'),
+    _PieData('', 84, 'Gift'),
+    _PieData('', 1000, 'Household'),
+    _PieData('', 580, 'Food'),
+    _PieData('', 360, 'Transport'),
+    _PieData('', 70, 'Pets'),
+    _PieData('', 50, 'Social')
   ];
   _buildCategory(Category category, double totalAmountSpend) {
     return GestureDetector(
