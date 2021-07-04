@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:budgetsavvy/screens/HomeScreen.dart';
 import 'package:budgetsavvy/screens/DashboardScreen.dart';
+import 'package:budgetsavvy/screens/RootApp.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       // theme: ThemeData(
       //   primaryColor: Colors.blue,
       // ),
-      home: DashboardScreen(),
+      home: RootApp(),
     );
   }
 }

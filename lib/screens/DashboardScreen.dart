@@ -197,12 +197,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Wallet Manager'),
-        ),
         body: Column(
           children: [
-            _children[_currentIndex],
+            // _children[_currentIndex],
             Expanded(child: 
             Center(
                   child: SfCircularChart(
@@ -221,26 +218,27 @@ class _DashboardScreenState extends State<DashboardScreen> {
             
           ],
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: onTabTapped,
-          currentIndex: _currentIndex, // this will be set when a new tab is tapped
-          items: [
-            BottomNavigationBarItem(
-              icon: new Icon(Icons.home),
-              title: new Text('Home'),
-              backgroundColor: Colors.blue
-            ),
-            BottomNavigationBarItem(
-              icon: new Icon(Icons.list_alt),
-              title: new Text('Budget'),
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.wallet_giftcard), title: Text('Rewards')),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.insert_chart_outlined),
-                title: Text('Statistics'))
-          ],
-        ));
+        // bottomNavigationBar: BottomNavigationBar(
+        //   onTap: onTabTapped,
+        //   currentIndex: _currentIndex, // this will be set when a new tab is tapped
+        //   items: [
+        //     BottomNavigationBarItem(
+        //       icon: new Icon(Icons.home),
+        //       title: new Text('Home'),
+        //       backgroundColor: Colors.blue
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: new Icon(Icons.list_alt),
+        //       title: new Text('Budget'),
+        //     ),
+        //     BottomNavigationBarItem(
+        //         icon: Icon(Icons.wallet_giftcard), title: Text('Rewards')),
+        //     BottomNavigationBarItem(
+        //         icon: Icon(Icons.insert_chart_outlined),
+        //         title: Text('Statistics'))
+        //   ],
+        // )
+        );
   }
 
   void onTabTapped(int index) {
