@@ -8,6 +8,9 @@
 // and displays a corresponding message in the center of the [Scaffold].
 
 import 'package:budgetsavvy/screens/DashboardScreen.dart';
+import 'package:budgetsavvy/screens/BudgetScreen.dart';
+import 'package:budgetsavvy/screens/RewardsScreen.dart';
+import 'package:budgetsavvy/screens/StatisticsScreen.dart';
 import 'package:flutter/material.dart';
 
 /// This is the main application widget.
@@ -40,14 +43,9 @@ class _RootAppState extends State<RootApp> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static List<Widget> _widgetOptions = <Widget>[
     DashboardScreen(),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+    BudgetScreen(),
+    RewardsScreen(),
+    StatisticsScreen()
   ];
 
   void _onItemTapped(int index) {
