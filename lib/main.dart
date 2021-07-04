@@ -12,10 +12,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Budget Savvy',
-      theme: ThemeData(
-        primaryColor: Colors.green,
-      ),
+      title: 'Wallet Manager',
+      // theme: ThemeData(
+      //   primaryColor: Colors.blue,
+      // ),
       home: DashboardScreen(),
     );
   }

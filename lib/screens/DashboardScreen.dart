@@ -7,6 +7,7 @@ import 'package:budgetsavvy/widgets/BarChart.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
+import 'package:budgetsavvy/widgets/placeholder_widget.dart';
 
 class DashboardScreen extends StatefulWidget {
   @override
@@ -14,6 +15,13 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  int _currentIndex = 0;
+  final List<Widget> _children = [
+    PlaceholderWidget(Colors.white),
+    PlaceholderWidget(Colors.deepOrange),
+    PlaceholderWidget(Colors.green),
+    PlaceholderWidget(Colors.lightBlue)
+  ];
   List<_PieData> pieData = [
     _PieData('', 350, 'Bills'),
     _PieData('', 340, 'Grocery'),
@@ -168,21 +176,74 @@ class _DashboardScreenState extends State<DashboardScreen> {
   //     ),
   //   );
   // }
+
+//   Widget build(BuildContext context) {
+//     return Center(
+//         child: SfCircularChart(
+//             title: ChartTitle(text: 'Sales by sales person'),
+//             legend: Legend(isVisible: true),
+//             series: <DoughnutSeries<_PieData, String>>[
+//           DoughnutSeries<_PieData, String>(
+//               explode: true,
+//               explodeIndex: 0,
+//               dataSource: pieData,
+//               xValueMapper: (_PieData data, _) => data.xData,
+//               yValueMapper: (_PieData data, _) => data.yData,
+//               dataLabelMapper: (_PieData data, _) => data.text,
+//               dataLabelSettings: DataLabelSettings(isVisible: true)),
+//         ]));
+//   }
+// }
+
   Widget build(BuildContext context) {
-    return Center(
-        child: SfCircularChart(
-            title: ChartTitle(text: 'Sales by sales person'),
-            legend: Legend(isVisible: true),
-            series: <DoughnutSeries<_PieData, String>>[
-          DoughnutSeries<_PieData, String>(
-              explode: true,
-              explodeIndex: 0,
-              dataSource: pieData,
-              xValueMapper: (_PieData data, _) => data.xData,
-              yValueMapper: (_PieData data, _) => data.yData,
-              dataLabelMapper: (_PieData data, _) => data.text,
-              dataLabelSettings: DataLabelSettings(isVisible: true)),
-        ]));
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Wallet Manager'),
+        ),
+        body: Column(
+          children: [
+            _children[_currentIndex],
+            Center(
+                child: SfCircularChart(
+                    legend: Legend(isVisible: true),
+                    series: <DoughnutSeries<_PieData, String>>[
+                  DoughnutSeries<_PieData, String>(
+                      explode: true,
+                      explodeIndex: 0,
+                      dataSource: pieData,
+                      xValueMapper: (_PieData data, _) => data.xData,
+                      yValueMapper: (_PieData data, _) => data.yData,
+                      dataLabelMapper: (_PieData data, _) => data.text,
+                      dataLabelSettings: DataLabelSettings(isVisible: true)),
+                ])),
+          ],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: onTabTapped,
+          currentIndex: _currentIndex, // this will be set when a new tab is tapped
+          items: [
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.home),
+              title: new Text('Home'),
+              backgroundColor: Colors.blue
+            ),
+            BottomNavigationBarItem(
+              icon: new Icon(Icons.list_alt),
+              title: new Text('Budget'),
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.wallet_giftcard), title: Text('Rewards')),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.insert_chart_outlined),
+                title: Text('Statistics'))
+          ],
+        ));
+  }
+
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
   }
 }
 
