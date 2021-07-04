@@ -197,6 +197,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Wallet Manager'),
+      ),
         body: Column(
           children: [
             // _children[_currentIndex],

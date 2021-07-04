@@ -2,6 +2,7 @@ import 'package:budgetsavvy/data/data.dart';
 import 'package:budgetsavvy/models/CategoryModel.dart';
 import 'package:budgetsavvy/models/ExpenseModel.dart';
 import 'package:budgetsavvy/screens/CategoryScreen.dart';
+import 'package:budgetsavvy/screens/SetBudgetScreen.dart';
 import 'package:budgetsavvy/utils/Colorshelper.dart';
 import 'package:budgetsavvy/widgets/BarChart.dart';
 import 'package:flutter/material.dart';
@@ -106,6 +107,21 @@ class _BudgetScreenState extends State<BudgetScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Wallet Manager'),
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SetBudgetScreen(
+                      context: context,
+                    ),
+                  ),
+                );
+          }, icon: Icon(Icons.settings))
+        ],
+      ),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverList(

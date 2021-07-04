@@ -60,9 +60,9 @@ class _RootAppState extends State<RootApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Wallet Manager'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Wallet Manager'),
+      // ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

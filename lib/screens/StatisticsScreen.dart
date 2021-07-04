@@ -10,6 +10,9 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Wallet Manager'),
+      ),
       body: Text("Hehe"),
     );
   }

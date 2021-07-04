@@ -10,6 +10,9 @@ class _RewardsScreenState extends State<RewardsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Wallet Manager'),
+      ),
       body: Text("World"),
     );
   }
