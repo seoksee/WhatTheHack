@@ -50,7 +50,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                   ),
                 ),
                 Text(
-                  '\$${(category.maxAmount - totalAmountSpend).toStringAsFixed(2)} / \$${category.maxAmount.toStringAsFixed(2)}',
+                  '\$${(totalAmountSpend).toStringAsFixed(2)} / \$${category.maxAmount.toStringAsFixed(2)}',
                   style: TextStyle(
                     fontSize: 18.0,
                     fontWeight: FontWeight.w600,
@@ -66,7 +66,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                     category.maxAmount;
                 double barWidth = percent * maxBarWidth;
                 if (barWidth < 0) {
-                  barWidth = 0;
+                  barWidth = maxBarWidth;
                 }
                 return Stack(
                   children: [
@@ -81,7 +81,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                       height: 20.0,
                       width: barWidth,
                       decoration: BoxDecoration(
-                        color: getColor(context, percent),
+                        color: _getColor(percent),
                         // borderRadius: BorderRadius.circular(15.0),
                       ),
                     ),
@@ -93,6 +93,14 @@ class _BudgetScreenState extends State<BudgetScreen> {
         ),
       ),
     );
+  }
+
+  _getColor(double percent) {
+    if (percent < 0) {
+      return Color(0xfff68783);
+    } else {
+      return Color(0xff54A7D6);
+    }
   }
 
   @override
