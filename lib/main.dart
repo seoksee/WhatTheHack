@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:budgetsavvy/screens/HomeScreen.dart';
+import 'package:budgetsavvy/screens/DashboardScreen.dart';
+import 'package:budgetsavvy/screens/RootApp.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,11 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Budget Savvy',
-      theme: ThemeData(
-        primaryColor: Colors.green,
-      ),
-      home: HomeScreen(),
+      title: 'Wallet Manager',
+      // theme: ThemeData(
+      //   primaryColor: Colors.blue,
+      // ),
+      home: RootApp(),
     );
   }
 }
