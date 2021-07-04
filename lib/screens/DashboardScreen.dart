@@ -1,10 +1,12 @@
 import 'package:budgetsavvy/data/data.dart';
 import 'package:budgetsavvy/models/CategoryModel.dart';
 import 'package:budgetsavvy/models/ExpenseModel.dart';
+import 'package:budgetsavvy/screens/BudgetScreen.dart';
 import 'package:budgetsavvy/screens/CategoryScreen.dart';
 import 'package:budgetsavvy/utils/Colorshelper.dart';
 import 'package:budgetsavvy/widgets/BarChart.dart';
 import 'package:flutter/material.dart';
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 import 'package:budgetsavvy/widgets/placeholder_widget.dart';
@@ -15,7 +17,8 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  int _currentIndex = 0;
+  int pageIndex = 0;
+  PageController controller = PageController(initialPage: 0);
   final List<Widget> _children = [
     PlaceholderWidget(Colors.white),
     PlaceholderWidget(Colors.deepOrange),
@@ -200,11 +203,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
         appBar: AppBar(
           title: Text('Wallet Manager'),
         ),
-        body: Column(
-          children: [
-            _children[_currentIndex],
-            Expanded(child: 
-            Center(
+        body: PageView(
+            children: [
+              BudgetScreen(),
+              Center(
                   child: SfCircularChart(
                       legend: Legend(isVisible: true),
                       series: <DoughnutSeries<_PieData, String>>[
@@ -217,35 +219,72 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         dataLabelMapper: (_PieData data, _) => data.text,
                         dataLabelSettings: DataLabelSettings(isVisible: true)),
                   ])),
-            )
-            
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: onTabTapped,
-          currentIndex: _currentIndex, // this will be set when a new tab is tapped
-          items: [
-            BottomNavigationBarItem(
-              icon: new Icon(Icons.home),
-              title: new Text('Home'),
-              backgroundColor: Colors.blue
+            ],
+            onPageChanged: (val) {
+              setState(() {
+                pageIndex = val;
+              });
+            },
+            physics: ClampingScrollPhysics(),
             ),
-            BottomNavigationBarItem(
-              icon: new Icon(Icons.list_alt),
-              title: new Text('Budget'),
-            ),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.wallet_giftcard), title: Text('Rewards')),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.insert_chart_outlined),
-                title: Text('Statistics'))
+        bottomNavigationBar: AnimatedBottomNavigationBar(
+          activeColor: Color(0xff008F7A),
+          splashColor: Color(0xff7DE197),
+          inactiveColor: Colors.black.withOpacity(0.5),
+          icons: <IconData>[
+            Icons.home,
+            Icons.list_alt,
+            Icons.wallet_giftcard,
+            Icons.insert_chart_outlined,
           ],
+          activeIndex: pageIndex,
+          notchSmoothness: NotchSmoothness.softEdge,
+          iconSize: 30,
+          onTap: (index) {
+            setState(() {
+              pageIndex = index;
+              controller.animateToPage(
+                pageIndex,
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.easeInOut,
+              );
+            });
+          },
+          // currentIndex:
+          //     _currentIndex, // this will be set when a new tab is tapped
+          // items: [
+          //   BottomNavigationBarItem(
+          //       icon: new Icon(Icons.home),
+          //       title: new Text('Home'),
+          //       backgroundColor: Colors.blue),
+          //   BottomNavigationBarItem(
+          //     icon: new Icon(Icons.list_alt),
+          //     title: new Text('Budget'),
+          //   ),
+          //   BottomNavigationBarItem(
+          //       icon: Icon(Icons.wallet_giftcard), title: Text('Rewards')),
+          //   BottomNavigationBarItem(
+          //       icon: Icon(Icons.insert_chart_outlined),
+          //       title: Text('Statistics'))
+          // ],
         ));
   }
 
   void onTabTapped(int index) {
     setState(() {
-      _currentIndex = index;
+      pageIndex = index;
+      controller.animateToPage(
+        pageIndex,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeInOut,
+      );
+    });
+  }
+
+  callback(int index) {
+    setState(() {
+      index ??= 2;
+      pageIndex = index;
     });
   }
 }
