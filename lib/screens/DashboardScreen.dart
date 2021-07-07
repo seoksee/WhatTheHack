@@ -30,8 +30,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     _PieData('', 1000, 'Household'),
     _PieData('', 580, 'Food'),
     _PieData('', 360, 'Transport'),
-    _PieData('', 70, 'Pets'),
-    _PieData('', 50, 'Social')
+    _PieData('', 100, 'Others'),
+    _PieData('', 80, 'Social')
   ];
 
   @override
@@ -126,6 +126,167 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
+final topIconList = DefaultTextStyle.merge(
+    // style: descTextStyle,
+    child: Container(
+      padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Column(
+            children: [
+              Text(
+                'Transport',
+                style: TextStyle(
+                  color: Color.fromRGBO(0, 168, 181, 1),
+                ),
+              ),
+              Icon(Icons.directions_car,
+                  color: Color.fromRGBO(0, 168, 181, 1), size: 30.0),
+              Text(
+                'RM 360',
+                style: TextStyle(
+                  color: Color.fromRGBO(0, 168, 181, 1),
+                ),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Text(
+                'Others',
+                style: TextStyle(
+                  color: Color.fromRGBO(73, 76, 162, 1),
+                ),
+              ),
+              Icon(Icons.more,
+                  color: Color.fromRGBO(73, 76, 162, 1), size: 30.0),
+              Text(
+                'RM 100',
+                style: TextStyle(
+                  color: Color.fromRGBO(73, 76, 162, 1),
+                ),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Text(
+                'Social',
+                style: TextStyle(
+                  color: Color.fromRGBO(255, 205, 96, 1),
+                ),
+              ),
+              Icon(Icons.local_movies,
+                  color: Color.fromRGBO(255, 205, 96, 1), size: 30.0),
+              Text(
+                'RM 80',
+                style: TextStyle(
+                  color: Color.fromRGBO(255, 205, 96, 1),
+                ),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Text('Bills',
+              style: TextStyle(color: Color.fromRGBO(75, 135, 185, 1),
+                ),),
+              Icon(
+                Icons.phone,color: Color.fromRGBO(75, 135, 185, 1),size: 30.0),
+              Text('RM 350',
+              style: TextStyle(color: Color.fromRGBO(75, 135, 185, 1),),),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+
+  final bottomIconList = DefaultTextStyle.merge(
+    // style: descTextStyle,
+    child: Container(
+      padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Column(
+            children: [
+              Text(
+                'Food',
+                style: TextStyle(
+                  color: Color.fromRGBO(116, 180, 155, 1),
+                ),
+              ),
+              Icon(Icons.fastfood,
+                  color: Color.fromRGBO(116, 180, 155, 1), size: 30.0),
+              Text(
+                'RM 580',
+                style: TextStyle(
+                  color: Color.fromRGBO(116, 180, 155, 1),
+                ),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Text(
+                'Household',
+                style: TextStyle(
+                  color: Color.fromRGBO(248, 177, 149, 1),
+                ),
+              ),
+              Icon(Icons.home,
+                  color: Color.fromRGBO(248, 177, 149, 1), size: 30.0),
+              Text(
+                'RM 1,000',
+                style: TextStyle(
+                  color: Color.fromRGBO(248, 177, 149, 1),
+                ),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Text(
+                'Gift',
+                style: TextStyle(
+                  color: Color.fromRGBO(246, 114, 128, 1),
+                ),
+              ),
+              Icon(Icons.card_giftcard,
+                  color: Color.fromRGBO(246, 114, 128, 1), size: 30.0),
+              Text(
+                'RM 84',
+                style: TextStyle(
+                  color: Color.fromRGBO(246, 114, 128, 1),
+                ),
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Text(
+                'Grocery',
+                style: TextStyle(
+                  color: Color.fromRGBO(192, 108, 132, 1),
+                ),
+              ),
+              Icon(Icons.local_grocery_store,
+                  color: Color.fromRGBO(192, 108, 132, 1), size: 30.0),
+              Text(
+                'RM 340',
+                style: TextStyle(
+                  color: Color.fromRGBO(192, 108, 132, 1),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -133,12 +294,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
         body: Column(
           children: [
-            // _children[_currentIndex],
-            Expanded(child: 
+            topIconList,
+            
             Center(
               child: SfCircularChart(
                 tooltipBehavior: _tooltipBehavior,
-                legend: Legend(isVisible: true),
+                // legend: Legend(isVisible: true),
                 series: <DoughnutSeries<_PieData, String>>[
                   DoughnutSeries<_PieData, String>(
                     explode: true,
@@ -150,7 +311,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     dataLabelSettings: DataLabelSettings(isVisible: true)
                   ),
                 ])),
-            )],
+            // ), 
+          bottomIconList
+            ],
         ),
     );
   }
