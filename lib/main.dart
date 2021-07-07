@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Wallet Manager',
+      theme: new ThemeData(scaffoldBackgroundColor: const Color(0xFFE5F6FF)),
       // theme: ThemeData(
       //   primaryColor: Colors.blue,
       // ),
