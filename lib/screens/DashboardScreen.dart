@@ -15,6 +15,7 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  TooltipBehavior _tooltipBehavior;
   int _currentIndex = 0;
   final List<Widget> _children = [
     PlaceholderWidget(Colors.white),
@@ -32,6 +33,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
     _PieData('', 70, 'Pets'),
     _PieData('', 50, 'Social')
   ];
+
+  @override
+  void initState() {
+    _tooltipBehavior = TooltipBehavior(
+        enable: true,
+        // Formatting the tooltip text
+        format: 'RM point.y');
+    super.initState();
+  }
+
   _buildCategory(Category category, double totalAmountSpend) {
     return GestureDetector(
       onTap: () => Navigator.push(
@@ -115,86 +126,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     body: CustomScrollView(
-  //       slivers: <Widget>[
-  //         SliverAppBar(
-  //           expandedHeight: 100.0,
-  //           forceElevated: true,
-  //           floating: true,
-  //           leading: IconButton(
-  //             icon: Icon(Icons.settings),
-  //             iconSize: 30.0,
-  //             onPressed: () {},
-  //           ),
-  //           flexibleSpace: FlexibleSpaceBar(
-  //             title: Text('Budget Savvy'),
-  //             centerTitle: true,
-  //           ),
-  //           actions: [
-  //             IconButton(
-  //               icon: Icon(Icons.add),
-  //               iconSize: 30.0,
-  //               onPressed: () {},
-  //             ),
-  //           ],
-  //         ),
-  //         SliverList(
-  //           delegate: SliverChildBuilderDelegate(
-  //             (BuildContext context, int index) {
-  //               if (index == 0) {
-  //                 return Container(
-  //                   margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
-  //                   decoration: BoxDecoration(
-  //                     color: Colors.white,
-  //                     boxShadow: [
-  //                       BoxShadow(
-  //                         color: Colors.black12,
-  //                         offset: Offset(0, 2),
-  //                         blurRadius: 6.0,
-  //                       ),
-  //                     ],
-  //                     borderRadius: BorderRadius.circular(10.0),
-  //                   ),
-  //                   child: BarChart(expenses: weeklySpending),
-  //                 );
-  //               } else {
-  //                 final Category category = categories[index - 1];
-  //                 double totalAmountSpend = 0;
-  //                 category.expenses.forEach((Expense expense) {
-  //                   totalAmountSpend += expense.cost;
-  //                 });
-  //                 return _buildCategory(category, totalAmountSpend);
-  //               }
-  //             },
-  //             childCount: 1 + categories.length,
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
-
-//   Widget build(BuildContext context) {
-//     return Center(
-//         child: SfCircularChart(
-//             title: ChartTitle(text: 'Sales by sales person'),
-//             legend: Legend(isVisible: true),
-//             series: <DoughnutSeries<_PieData, String>>[
-//           DoughnutSeries<_PieData, String>(
-//               explode: true,
-//               explodeIndex: 0,
-//               dataSource: pieData,
-//               xValueMapper: (_PieData data, _) => data.xData,
-//               yValueMapper: (_PieData data, _) => data.yData,
-//               dataLabelMapper: (_PieData data, _) => data.text,
-//               dataLabelSettings: DataLabelSettings(isVisible: true)),
-//         ]));
-//   }
-// }
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -205,43 +136,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
             // _children[_currentIndex],
             Expanded(child: 
             Center(
-                  child: SfCircularChart(
-                      legend: Legend(isVisible: true),
-                      series: <DoughnutSeries<_PieData, String>>[
-                    DoughnutSeries<_PieData, String>(
-                        explode: true,
-                        explodeIndex: 0,
-                        dataSource: pieData,
-                        xValueMapper: (_PieData data, _) => data.xData,
-                        yValueMapper: (_PieData data, _) => data.yData,
-                        dataLabelMapper: (_PieData data, _) => data.text,
-                        dataLabelSettings: DataLabelSettings(isVisible: true)),
-                  ])),
-            )
-            
-          ],
+              child: SfCircularChart(
+                tooltipBehavior: _tooltipBehavior,
+                legend: Legend(isVisible: true),
+                series: <DoughnutSeries<_PieData, String>>[
+                  DoughnutSeries<_PieData, String>(
+                    explode: true,
+                    enableTooltip: true,
+                    dataSource: pieData,  
+                    xValueMapper: (_PieData data, _) => data.xData,
+                    yValueMapper: (_PieData data, _) => data.yData,
+                    dataLabelMapper: (_PieData data, _) => (data.text),
+                    dataLabelSettings: DataLabelSettings(isVisible: true)
+                  ),
+                ])),
+            )],
         ),
-        // bottomNavigationBar: BottomNavigationBar(
-        //   onTap: onTabTapped,
-        //   currentIndex: _currentIndex, // this will be set when a new tab is tapped
-        //   items: [
-        //     BottomNavigationBarItem(
-        //       icon: new Icon(Icons.home),
-        //       title: new Text('Home'),
-        //       backgroundColor: Colors.blue
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: new Icon(Icons.list_alt),
-        //       title: new Text('Budget'),
-        //     ),
-        //     BottomNavigationBarItem(
-        //         icon: Icon(Icons.wallet_giftcard), title: Text('Rewards')),
-        //     BottomNavigationBarItem(
-        //         icon: Icon(Icons.insert_chart_outlined),
-        //         title: Text('Statistics'))
-        //   ],
-        // )
-        );
+    );
   }
 
   void onTabTapped(int index) {
