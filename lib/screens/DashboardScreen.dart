@@ -129,7 +129,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Wallet Manager'),
+        title: const Text('Go Manager'),
       ),
         body: Column(
           children: [

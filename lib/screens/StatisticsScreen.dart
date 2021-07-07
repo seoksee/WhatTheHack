@@ -11,7 +11,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Wallet Manager'),
+        title: const Text('Go Manager'),
       ),
       body: Text("Hehe"),
     );

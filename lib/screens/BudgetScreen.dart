@@ -108,7 +108,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Wallet Manager'),
+        title: const Text('Go Manager'),
         actions: [
           IconButton(onPressed: (){
             Navigator.push(

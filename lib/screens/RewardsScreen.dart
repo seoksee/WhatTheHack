@@ -11,7 +11,7 @@ class _RewardsScreenState extends State<RewardsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Wallet Manager'),
+        title: const Text('Go Manager'),
       ),
       body: Text("World"),
     );
