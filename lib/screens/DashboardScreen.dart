@@ -287,6 +287,39 @@ final topIconList = DefaultTextStyle.merge(
     ),
   );
 
+final suggestionsList = DefaultTextStyle.merge(
+    // style: descTextStyle,
+    child: Container(
+      padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text("Suggestions: ",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          Image(image: AssetImage('row/unifi-logo.png'),
+            height: 40,
+            width: 40,),
+          Image(image: AssetImage('row/go-plus-logo.png'),height: 40,width: 40,),
+          Column(
+            children: [
+              Icon(Icons.person, size: 30.0),
+              Text(
+                'Dad'
+              ),
+            ],
+          ),
+          Column(
+            children: [
+              Icon(Icons.person, size: 30.0),
+              Text(
+                'Mom',
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -312,7 +345,8 @@ final topIconList = DefaultTextStyle.merge(
                   ),
                 ])),
             // ), 
-          bottomIconList
+          bottomIconList,
+          suggestionsList
             ],
         ),
     );
