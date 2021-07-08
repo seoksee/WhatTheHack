@@ -178,7 +178,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                                 contentPadding:
                                     EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 10.0),
                                 title: Text(
-                                  'Monthly',
+                                  'Total Monthly Budget',
                                   style: TextStyle(
                                       fontSize: 15, color: Color(0xffa9a9a9)),
                                 ),
