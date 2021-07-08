@@ -79,11 +79,11 @@ class _RootAppState extends State<RootApp> {
             label: 'Budget',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.insert_chart_outlined),
+            icon: Icon(Icons.wallet_giftcard),
             label: 'Rewards',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.wallet_giftcard),
+            icon: Icon(Icons.insert_chart_outlined),
             label: 'Statistics',
           ),
         ],
