@@ -32,6 +32,7 @@ class _SetBudgetScreenState extends State<SetBudgetScreen> {
     // var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        title: Text("Set Budget"),
         // backgroundColor: secondary,
         actions: <Widget>[
           IconButton(
@@ -104,33 +105,230 @@ class _SetBudgetScreenState extends State<SetBudgetScreen> {
                 //   icon: Icon(Icons.person_outline),
                 // ),
                 SizedBox(height: 15),
-                SelectFormField(
-                  // key: ValueKey<int>(count2),
-                  type: SelectFormFieldType.dropdown, // or can be dialog
-                  controller: _categoryEditor,
-                  icon: Icon(Icons.category),
-                  hintText: 'Category of the spend',
-                  labelText: 'Category',
-                  items: categories
-                      .map((e) => {
-                            "value": e.maxAmount.toString(),
-                            "label": e.name,
-                          })
-                      .toList(),
-                  onChanged: (val) => setAmount(val),
-                  validator: (value) =>
-                      value.isEmpty ? "Required field *" : null,
-                ),
-                TextFormField(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: const InputDecoration(
-                    icon: Icon(Icons.shopping_cart_outlined),
-                    hintText: 'How much will you spend on this category?',
-                    labelText: 'Budget',
+                Card(
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
+                              child: Text("Bills",
+                              style: TextStyle(fontWeight: FontWeight.bold,
+                              fontSize: 20,),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: TextFormField(initialValue: "RM 300.00",
+                              style: TextStyle(fontSize: 20),
+                              textAlign: TextAlign.right,),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(thickness: 2,),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Text(
+                                "Grocery",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: TextFormField(
+                                initialValue: "RM 500.00",
+                                style: TextStyle(fontSize: 20),
+                                textAlign: TextAlign.right,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(thickness: 2,),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Text(
+                                "Gift",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: TextFormField(
+                                initialValue: "RM 100.00",
+                                style: TextStyle(fontSize: 20),
+                                textAlign: TextAlign.right,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(thickness: 2,),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Text(
+                                "Household",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: TextFormField(
+                                initialValue: "RM 1,000.00",
+                                style: TextStyle(fontSize: 20),
+                                textAlign: TextAlign.right,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(thickness: 2,),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Text(
+                                "Food",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: TextFormField(
+                                initialValue: "RM 1,000.00",
+                                style: TextStyle(fontSize: 20),
+                                textAlign: TextAlign.right,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(thickness: 2,),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Text(
+                                "Transport",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: TextFormField(
+                                initialValue: "RM 500.00",
+                                style: TextStyle(fontSize: 20),
+                                textAlign: TextAlign.right,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(thickness: 2,),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Text(
+                                "Others",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: TextFormField(
+                                initialValue: "RM 200.00",
+                                style: TextStyle(fontSize: 20),
+                                textAlign: TextAlign.right,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Divider(thickness: 2,),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Text(
+                                "Social",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: new Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: TextFormField(
+                                initialValue: "RM 200.00",
+                                style: TextStyle(fontSize: 20),
+                                textAlign: TextAlign.right,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  controller: _amountEditor,
-                  validator: (value) =>
-                      value.isEmpty ? "Required filed *" : null,
+                  
                 ),
               ],
             ),
