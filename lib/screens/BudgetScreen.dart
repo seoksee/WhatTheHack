@@ -108,19 +108,31 @@ class _BudgetScreenState extends State<BudgetScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Go Manager'),
+        title: Padding(padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
+        child: const Text('Go Manager'),),
         actions: [
-          IconButton(onPressed: (){
-            Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SetBudgetScreen(
-                      context: context,
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SetBudgetScreen(
+                        context: context,
+                      ),
                     ),
-                  ),
-                );
-          }, icon: Icon(Icons.settings))
-        ],
+                  );
+                },
+                icon: Icon(Icons.settings))
+          ],
+        bottom: PreferredSize(child: Padding(
+            padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
+            child: Text("<                   Jun 2021                   >",
+            style: TextStyle(
+            fontSize: 18,
+            color: Color(0xffffffff)),),
+            ), 
+        preferredSize: Size(0.0,20.0),)
+        
       ),
       body: CustomScrollView(
         slivers: <Widget>[

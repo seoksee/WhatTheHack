@@ -43,89 +43,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     super.initState();
   }
 
-  _buildCategory(Category category, double totalAmountSpend) {
-    return GestureDetector(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (_) => CategoryScreen(category: category),
-        ),
-      ),
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.0),
-        padding: EdgeInsets.all(20.0),
-        height: 100.0,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              offset: Offset(0, 2),
-              blurRadius: 6.0,
-            )
-          ],
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  category.name,
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                Text(
-                  '\$${(category.maxAmount - totalAmountSpend).toStringAsFixed(2)} / \$${category.maxAmount.toStringAsFixed(2)}',
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 10.0),
-            LayoutBuilder(
-              builder: (BuildContext contex, BoxConstraints constraints) {
-                final double maxBarWidth = constraints.maxWidth;
-                final double percent = (category.maxAmount - totalAmountSpend) /
-                    category.maxAmount;
-                double barWidth = percent * maxBarWidth;
-                if (barWidth < 0) {
-                  barWidth = 0;
-                }
-                return Stack(
-                  children: [
-                    Container(
-                      height: 20.0,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                    ),
-                    Container(
-                      height: 20.0,
-                      width: barWidth,
-                      decoration: BoxDecoration(
-                        color: getColor(context, percent),
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                    ),
-                  ],
-                );
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
 final topIconList = DefaultTextStyle.merge(
     // style: descTextStyle,
     child: Container(
@@ -323,7 +240,15 @@ final suggestionsList = DefaultTextStyle.merge(
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Go Manager'),
+        title: Padding(padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
+        child: const Text('Go Manager'),),
+        bottom: PreferredSize(child: Padding(
+            padding: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
+            child: Text("<                   Jun 2021                   >",
+            style: TextStyle(
+            fontSize: 18,
+            color: Color(0xffffffff)),),), 
+        preferredSize: Size(0.0,20.0),)
       ),
         body: Column(
           children: [
