@@ -6,6 +6,7 @@ import 'package:budgetsavvy/screens/SetBudgetScreen.dart';
 import 'package:budgetsavvy/utils/Colorshelper.dart';
 import 'package:budgetsavvy/widgets/BarChart.dart';
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class BudgetScreen extends StatefulWidget {
   @override
@@ -143,7 +144,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                   return Container(
                     margin: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      // color: Colors.white,
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black12,
@@ -151,8 +152,47 @@ class _BudgetScreenState extends State<BudgetScreen> {
                           blurRadius: 6.0,
                         ),
                       ],
-                      // borderRadius: BorderRadius.circular(0.0),
+                      borderRadius: BorderRadius.circular(0.0),
                     ),
+                    child:  Card(
+                        child: Column(
+                          children: [
+                            ListTile(
+                              title: 
+                              Text('Income RM 3,520.00     Expenses 2,834.00',
+                                style: TextStyle(fontWeight: FontWeight.w500)),
+                            ),
+                            Divider(thickness: 3,),
+                            ListTile(
+                              title: Text('Remaining (Monthly)',
+                                style: TextStyle(
+                                  fontSize: 15, color: Color(0xffa9a9a9)),),
+                              subtitle: Text('RM 186.00',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500, 
+                                  color: Colors.black,
+                                  fontSize: 20)),
+                            ),
+                            Divider(),
+                                ListTile(
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 10.0),
+                                title: Text(
+                                  'Monthly',
+                                  style: TextStyle(
+                                      fontSize: 15, color: Color(0xffa9a9a9)),
+                                ),
+                                subtitle: Text('RM 3,000.00',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.black,
+                                        fontSize: 20)),
+                                ),
+                              
+                            
+                          ],
+                        ),
+                      ),
                     // child: BarChart(expenses: weeklySpending),
                   );
                 } else {
