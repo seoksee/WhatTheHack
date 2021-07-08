@@ -256,6 +256,36 @@ final suggestionsList = DefaultTextStyle.merge(
             
             Center(
               child: SfCircularChart(
+                 annotations: <CircularChartAnnotation>[
+                    CircularChartAnnotation(
+                        height:
+                            '80%', // Setting height and width for the circular chart annotation
+                        width: '80%',
+                        widget: Container(
+                            child: PhysicalModel(
+                                child: Container(),
+                                shape: BoxShape.circle,
+                                elevation: 10,
+                                shadowColor: Colors.black,
+                                color:
+                                    const Color.fromRGBO(230, 230, 230, 1)))),
+                    CircularChartAnnotation(
+                        widget: Container(
+                          child: 
+                          Text("+ RM 3,520.00\n- RM 2,834.00\n= RM 686.00",
+                          textAlign: TextAlign.center,
+                          style: 
+                          TextStyle(
+                              color: Color.fromRGBO(0, 0, 0, 1),
+                              )),)
+                        // Column(
+                        //     children:  [
+                        //       Text("RM 2,834.00"),
+                        //       Text("RM 3,520.00"),
+                        //       Text("RM 686.00")
+                        //     ],))
+                                    )
+                  ],
                 tooltipBehavior: _tooltipBehavior,
                 // legend: Legend(isVisible: true),
                 series: <DoughnutSeries<_PieData, String>>[
