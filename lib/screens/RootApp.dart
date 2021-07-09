@@ -84,7 +84,7 @@ class _RootAppState extends State<RootApp> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.insert_chart_outlined),
-            label: 'Statistics',
+            label: 'Financial Advisor',
           ),
         ],
         currentIndex: _selectedIndex,
